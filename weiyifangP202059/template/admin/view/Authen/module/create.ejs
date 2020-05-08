@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/componentes/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/componentes/stylesheets/style.css" media="all">
+    <script src="/componentes/layui/layui.js"></script>
+    <script src="/componentes/javascripts/jquery.min.js"></script>
+    <script src="/componentes/javascripts/matrix.js"></script>
+    <script src="/componentes/modules/xm-select.js"></script>
+</head>
+<body style="background-color: #f2f2f2;">
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body" style="padding: 15px 0;">
+            <div class="layui-form">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color:red">*</span>模块名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" lay-verify="FrequencyVerify" id="moduleName" value="1" name="moduleName" placeholder="请输入模块名称">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color:red">*</span>模块编号</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" lay-verify="FrequencyVerify" id="moduleCode" value="1" name="moduleCode" placeholder="请输入模块编号">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color:red">*</span>上级模块</label>
+                    <div class="layui-input-block">
+                        <select name="ParentId" lay-verify="required" id="ParentId" class="layui-input">
+                            <option value="">请选择上级模块</option>
+                            <option value="1">删除</option>
+                            <option value="2">拉黑</option>
+                            <option value="3">禁言</option>
+                            <option value="4">封号</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color:red">*</span>菜单图标</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" lay-verify="FrequencyVerify" id="Icon" value="1" name="Icon" placeholder="请输入菜单图标">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color:red">*</span>链接地址</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" lay-verify="FrequencyVerify" id="url" value="1" name="url" placeholder="请输入链接地址">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color:red">*</span>排序</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" lay-verify="FrequencyVerify" id="slot" value="1" name="slot" placeholder="请输入排序">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">是否菜单</label>
+                    <div class="layui-input-block" style="width:182px">
+                        <input type="checkbox" name="IsMenu" id="IsMenu" checked="" value="1" lay-filter="switchInStart" lay-skin="switch" lay-text="是|否">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">是否激活</label>
+                    <div class="layui-input-block" style="width:182px">
+                        <input type="checkbox" name="Enabled" id="Enabled" checked="" value="1" lay-filter="switchInStart" lay-skin="switch" lay-text="是|否">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-hide">
+                    <input type="button" lay-submit lay-filter="LAY-user-front-submit" id="LAY-user-front-submit" value="确认">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+<script type="text/javascript">
+    Init();
+    layui.use('element', function () {
+        var $ = layui.jquery,element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+
+        //触发事件
+        var active = {
+            tabChange: function () {
+                element.tabChange('demo', '22'); //切换到：用户管理
+            }
+        };
+        $('.site-demo-active').on('click', function () {
+            var othis = $(this), type = othis.data('type');
+            active[type] ? active[type].call(this, othis) : '';
+        });
+        //获取当前ip
+        $("#WhiteListAdd").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "/Authority/Group/AddIP",
+                success: function (data) {
+                    var ips = $("#WhiteList").val();
+                    if (ips == "" || ips == null || ips == undefined) {
+                        $("#WhiteList").val(data)
+                    } else {
+                        ips += " " + data;
+                        $("#WhiteList").val(ips)
+                    }
+                }
+            });
+        });
+    });
+</script>
+</html>

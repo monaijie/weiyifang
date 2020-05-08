@@ -1,0 +1,111 @@
+
+.content{
+    margin: 15px;
+    background: #ffffff;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+}
+.tableContent {
+    padding: 5px 15px;
+}
+.layui-table-tool {
+    background-color: transparent;
+}
+.layui-lin-hight {
+    line-height: 35px;
+    color: #666666;
+}
+.layui-table-title1{
+    color: #666666;
+}
+
+.layui-buttom-right{
+    text-align: right;
+    margin-right: 20px;
+}
+.layui-lin-hight span{
+    height: 100%;
+    width: 35px;
+    text-align: center;
+    display: inline-block;
+    border-right: 1px solid #ccc;
+    margin-right: 5px;
+}
+.layui-border{
+    border:1px solid #ccc;
+}
+.query{
+    width: 100%;
+    padding-bottom: 10px;
+    border: 1px solid #F2F2F2;
+}
+.queryBottom{
+    margin-top: 10px;
+}
+.layui-btn-container .layui-btn{
+    margin: 0;
+}
+.buttonColor{
+    background-color: transparent;
+    color: #666;
+}
+.buttonColor:hover{
+    color: #666;
+}
+.layui-inputFloat {
+    float: left;
+    margin-bottom: 10px;
+}
+
+.layui-table-body {
+    /*火狐-IE去除滚动条*/
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+/*谷歌去取滚动条*/
+::-webkit-scrollbar {
+    display: none;
+}
+.checkbox-style .layui-form-checkbox span {
+    width: 120px;
+}
+.popContent{
+    width: 92%;
+    margin: 4% auto 4% auto;
+    background: #ffffff;
+}
+.popPinding {
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+}
+.layui-form-item {
+    width: 85%;
+}
+.checkbox-style .layui-icon-ok::before {
+    content: "\e643";
+}
+.layui-form-label {
+    padding: 10px 12px 8px 5px!important;
+}
+.layui-form-select .layui-input {
+     padding-right: 0;
+}
+.layui-form-label{
+    color: #666666;
+}
+.layui-layer-iframe .layui-layer-title{
+    background-color: white;
+}
+.layui-layout-admin .layui-footer {
+    background-color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0 -1px 2px 0 rgba(0, 0, 0, .05);
+}
+.layui-fluid {
+    padding: 15px;
+}
+
+

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/componentes/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/componentes/stylesheets/style.css" media="all">
+    <script src="/componentes/layui/layui.js"></script>
+    <script src="/componentes/javascripts/jquery.min.js"></script>
+    <script src="/componentes/javascripts/matrix.js"></script>
+    <script src="/componentes/modules/xm-select.js"></script>
+</head>
+<body style="background-color: #f2f2f2;">
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body" style="padding: 15px 0;">
+            <div class="layui-form">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color:red">*</span> 用户名</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" lay-verify="FrequencyVerify" id="name" value="" name="name" placeholder="请输入用户名">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color:red">*</span>电子邮件</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" lay-verify="FrequencyVerify" id="code" value="" name="code" placeholder="请输入电子邮件">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color:red">*</span>新密码</label>
+                    <div class="layui-input-block">
+                        <input type="password" class="layui-input" lay-verify="FrequencyVerify" id="icon" value="" name="icon" placeholder="请输入新密码">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color:red">*</span>确认密码</label>
+                    <div class="layui-input-block">
+                        <input type="password" class="layui-input" lay-verify="FrequencyVerify" id="slot" value="" name="slot" placeholder="请确认新密码">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-hide">
+                    <input type="button" lay-submit lay-filter="LAY-user-front-submit" id="LAY-user-front-submit" value="确认">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+<script type="text/javascript">
+    layui.use(['table', 'form','laydate'], function () {
+        var table = layui.table, form = layui.form;
+        var laydate = layui.laydate;
+        var $ = layui.$;
+        //开始时间
+        laydate.render({
+            elem: '#StartTime', type: 'datetime', format: 'yyyy-MM-dd HH:mm'
+        });
+        //结束时间
+        laydate.render({
+            elem: '#EndTime', type: 'datetime', format: 'yyyy-MM-dd HH:mm'
+        });
+        //验证必须大于0的数字
+        form.verify({
+            FrequencyVerify: function (value) {
+                var re = /^\+?[0-9][0-9]*$/;
+                if (!re.test(value)) {
+                    return "输入大于0的正整数!";
+                }
+                if (value <=0) {
+                    return "输入大于0的正整数!";
+                }
+            }
+        });
+
+
+        //提交表单数据
+        form.on('submit(NoticeSubmit)', function (data) {
+            var actionUrl = '@Url.Content("~/Game/Notice/Create")';
+            //获取渠道信息
+            var ChannelsList = xmSelectChanel.getValue("value");
+            let List='';
+            ChannelsList.forEach(function (value, index) {
+                List += value+',';
+            })
+            if (List != '') {
+                data.field.Channel = List.substring(0, List.length - 1);
+                $.ajax({
+                    type: "POST",
+                    url: actionUrl,
+                    data: data.field,
+                    success: function (data) {
+                        layer.msg(data.message);
+                        if (data.resultType == 0) {
+                            window.location.href = '@Url.Action("Index")';
+                        }
+                    }
+                });
+            } else {
+                layer.msg("请选择播放渠道!");
+            }
+        });
+        //监听指定开关
+        form.on('switch(switchInStart)', function (data) {
+            $("#InStart").val(this.checked ? '1' : '0');
+        });
+    });
+</script>
+<script>
+    Init();
+</script>
+</html>

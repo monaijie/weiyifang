@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/componentes/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/componentes/stylesheets/style.css" media="all">
+    <script src="/componentes/layui/layui.js"></script>
+    <script src="/componentes/javascripts/jquery.min.js"></script>
+    <script src="/componentes/javascripts/matrix.js"></script>
+    <script src="/componentes/modules/xm-select.js"></script>
+</head>
+<body style="background-color: #f2f2f2;">
+<div class="layui-tab layui-form  layui-tab-brief popContent" lay-filter="docDemoTabBrief" id="UserRoleID">
+    <!-- Nav tabs -->
+    <ul class="layui-tab-title">
+        <li class="layui-this">基本信息</li>
+        <li>角色</li>
+    </ul>
+
+    <div class="layui-tab-content popPinding">
+        <!-- Tab panes -->
+        <div class="layui-tab-item layui-show">
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span style="color:red">*</span>用户名</label>
+                <div class="layui-input-block">
+                    <input class="layui-input" type="text" name="LoginName" value="" placeholder="请输入用户名" lay-verify="required" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">姓名</label>
+                <div class="layui-input-block">
+                    <input class="layui-input" type="text" name="FullName" value="" placeholder="请输入姓名" lay-verify="required" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span style="color:red">*</span>新密码</label>
+                <div class="layui-input-block">
+                    <input class="layui-input" type="password" name="NewLoginPwd" value="" placeholder="请输入新密码" lay-verify="required" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span style="color:red">*</span>确认密码</label>
+                <div class="layui-input-block">
+                    <input class="layui-input" type="password" name="NewLoginPwdConfirm" value="" placeholder="请输入确认密码" lay-verify="required" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">电子邮件</label>
+                <div class="layui-input-block">
+                    <input class="layui-input" type="text" name="Email" value="" placeholder="请输入电子邮件" lay-verify="required" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">电话号码</label>
+                <div class="layui-input-block">
+                    <input class="layui-input" type="text" name="Phone" value="" placeholder="请输入电话号码" lay-verify="required" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">是否激活</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="IsEnabled" lay-skin="switch" lay-text="是|否">
+                </div>
+
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">登录白名单 </label>
+                <div class="layui-input-block">
+                    <textarea  name="WhiteList" placeholder="登录白名单IP多个用空格隔开,留空为允许所有地址通过 格式0.0.0.0 127.0.0.1 127.0.0.2 " class="layui-input" style = "height:100px !important;resize: none;"></textarea>
+                </div>
+                <div class="layui-form-label" style="width:100%;text-align:right;">
+                    <button class="layui-btn layui-btn-sm layui-btn-normal" id="WhiteListAdd"><i class="layui-icon">&#xe654;</i>加入当前IP</button>
+                </div>
+            </div>
+
+        </div>
+        <!--角色-->
+        <div class="layui-tab-item">
+            <div class="tab-pane" id="role">
+                <div style="display:block;margin:auto auto;">
+                    <span style="display:inline-block;width:115px;margin:8px 10px">
+                        <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作" checked="" style = "margin:8px 10px">
+                    </span>
+                    <span style="display:inline-block;width:115px;margin:8px 10px">
+                        <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作" checked="" style = "margin:8px 10px">
+                    </span>
+                    <span style="display:inline-block;width:115px;margin:8px 10px">
+                        <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作" checked="" style = "margin:8px 10px">
+                    </span>
+                    <span style="display:inline-block;width:115px;margin:8px 10px">
+                        <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作" checked="" style = "margin:8px 10px">
+                    </span>
+                    <hr>
+                    <span style="display:inline-block;width:115px;margin:8px 10px">
+                        <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作" checked="" style = "margin:8px 10px">
+                    </span>
+                    <span style="display:inline-block;width:115px;margin:8px 10px">
+                        <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作" checked="" style = "margin:8px 10px">
+                    </span>
+                    <span style="display:inline-block;width:115px;margin:8px 10px">
+                        <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作" checked="" style = "margin:8px 10px">
+                    </span>
+                    <span style="display:inline-block;width:115px;margin:8px 10px">
+                        <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作" checked="" style = "margin:8px 10px">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item layui-hide">
+        <input type="button" lay-submit lay-filter="LAY-user-front-submit" id="LAY-user-front-submit" value="确认">
+    </div>
+</div>
+</body>
+
+
+<script type="text/javascript">
+    Init();
+    layui.use('element', function () {
+        var $ = layui.jquery,element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+
+        //触发事件
+        var active = {
+            tabChange: function () {
+                element.tabChange('demo', '22'); //切换到：用户管理
+            }
+        };
+        $('.site-demo-active').on('click', function () {
+            var othis = $(this), type = othis.data('type');
+            active[type] ? active[type].call(this, othis) : '';
+        });
+        //获取当前ip
+        $("#WhiteListAdd").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "/Authority/Group/AddIP",
+                success: function (data) {
+                    var ips = $("#WhiteList").val();
+                    if (ips == "" || ips == null || ips == undefined) {
+                        $("#WhiteList").val(data)
+                    } else {
+                        ips += " " + data;
+                        $("#WhiteList").val(ips)
+                    }
+                }
+            });
+        });
+    });
+</script>
+</html>
